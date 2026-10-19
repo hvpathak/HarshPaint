@@ -10,11 +10,11 @@ repository = "https://github.com/hvpathak/HarshPaint"
 
 [workspace.dependencies]
 harshpaint-core = { path = "crates/core" }
-eframe = "0.31"
-rfd = "0.15"
+eframe = "0.37"
+rfd = "0.17"
 image = { version = "0.25", default-features = false, features = ["png", "jpeg", "bmp", "gif"] }
 ab_glyph = "0.2"
-zip = { version = "2", default-features = false, features = ["deflate"] }
+zip = { version = "9", default-features = false, features = ["deflate"] }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 arboard = { version = "3", default-features = false, features = ["image-data"] }
