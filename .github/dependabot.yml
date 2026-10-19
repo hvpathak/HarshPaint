@@ -1,0 +1,16 @@
+version: 2
+updates:
+  # Library improvements (image codecs, egui, …) arrive as weekly pull
+  # requests; CI tests each one on Windows, macOS and Linux before it's merged.
+  - package-ecosystem: cargo
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      rust-dependencies:
+        patterns: ["*"]
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
