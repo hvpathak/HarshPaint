@@ -31,7 +31,7 @@ jobs:
           New-Item -ItemType Directory dist | Out-Null
           Copy-Item "target/release/$env:BIN.exe" "dist/$env:APP-windows-x64.exe"
           Copy-Item "target/release/$env:CLI.exe" "dist/$env:CLI-windows-x64.exe"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: windows
           path: dist/*
@@ -60,7 +60,7 @@ jobs:
             "MimeType=$DESKTOP_MIME" \
             "Terminal=false" > "dist/$name/$BIN.desktop"
           tar -C dist -czf "dist/$name.tar.gz" "$name"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: linux
           path: dist/*.tar.gz
@@ -120,7 +120,7 @@ jobs:
           cd dist
           ditto -c -k --keepParent "$APP.app" "$APP-macos-universal.zip"
           zip -j "$CLI-macos-universal.zip" "$CLI"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: macos
           path: dist/*.zip
