@@ -1,0 +1,18 @@
+[package]
+name = "harshpaint"
+description = "HarshPaint: a fast, friendly paint app with layers, symmetry and pixel art"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+harshpaint-core.workspace = true
+eframe.workspace = true
+rfd.workspace = true
+arboard.workspace = true
+
+[build-dependencies]
+winresource = "0.1"
+
+[lints]
+workspace = true

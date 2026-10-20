@@ -1,0 +1,51 @@
+[workspace]
+resolver = "3"
+members = ["crates/core", "apps/harshpaint", "apps/harshpaint-cli"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+repository = "https://github.com/hvpathak/HarshPaint"
+
+[workspace.dependencies]
+harshpaint-core = { path = "crates/core" }
+eframe = "0.31"
+rfd = "0.15"
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "bmp", "gif"] }
+ab_glyph = "0.2"
+zip = { version = "2", default-features = false, features = ["deflate"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+arboard = { version = "3", default-features = false, features = ["image-data"] }
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+# Never crash: these are allowed in tests only (see clippy.toml).
+[workspace.lints.clippy]
+unwrap_used = "deny"
+expect_used = "deny"
+panic = "deny"
+todo = "deny"
+unimplemented = "deny"
+unreachable = "deny"
+indexing_slicing = "deny"
+dbg_macro = "warn"
+
+# Disk is tight on this machine: no debug info in dev builds.
+[profile.dev]
+debug = false
+
+# Pixel loops are unusably slow unoptimised, even while developing.
+[profile.dev.package."*"]
+debug = false
+opt-level = 2
+
+[profile.dev.package.harshpaint-core]
+opt-level = 2
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = true

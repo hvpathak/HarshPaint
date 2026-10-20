@@ -1,0 +1,12 @@
+[package]
+name = "harshpaint-cli"
+description = "Headless HarshPaint: convert, resize, rotate and generate art from scripts and agents"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+harshpaint-core.workspace = true
+
+[lints]
+workspace = true

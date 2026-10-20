@@ -1,0 +1,21 @@
+version: 2
+updates:
+  # Only small, safe library fixes (patch versions) arrive on their own; CI tests each on
+  # Windows, macOS and Linux. Bigger version jumps (egui, eframe, …) are done by hand, because
+  # they have to move together (for HarshPad: in step with WordCraft and PdfCraft, through
+  # "get their update"). This keeps failing pull requests, and their emails, away.
+  - package-ecosystem: cargo
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major", "version-update:semver-minor"]
+    groups:
+      rust-dependencies:
+        patterns: ["*"]
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: monthly
